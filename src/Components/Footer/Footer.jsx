@@ -1,7 +1,8 @@
 
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 export default function Footer() {
+  const navigate = useNavigate()
   return (
     <footer class="w-full">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 lg:px-0">
@@ -18,13 +19,13 @@ export default function Footer() {
           fill="black"
         ></path>
       </svg>
-      <span class="ml-4 text-lg font-bold">Tech Solo</span>
+      <Link to='/'><span class="ml-4 text-lg font-bold">Tech Solo</span></Link>
     </div>
     <div class="hidden items-center md:inline-flex">
       <span class="text-sm font-medium text-black">Ready to be one of us ?</span>
-      {/* navigate this button to login page */}
       <button
         type="button"
+        onClick={()=>navigate('/login')}
         class="ml-2 rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
       >
         Get Started
@@ -38,26 +39,26 @@ export default function Footer() {
       <div class="mb-8 lg:mb-0">
         <p class="mb-6 text-lg font-semibold text-gray-700 ">Journey Section</p>
         <ul class="flex flex-col space-y-4 text-[14px] font-medium text-gray-500">
-            {/* add link in all a tags */}
-        <a href='/about'>
+        <Link to='/about'>
           <li>About Me</li>
-        </a>
+        </Link>
         </ul>
       </div>
       <div class="mb-8 lg:mb-0">
         <p class="mb-6 text-lg font-semibold text-gray-700 ">Social Media</p>
         <ul class="flex flex-col space-y-4 text-[14px] font-medium text-gray-500">
-          <a href="https://www.instagram.com/rohitsinghwho" target='_blank'>
+          <Link to="https://www.instagram.com/rohitsinghwho" target='_blank'>
             <li>Instagram</li>
-          </a>
-          <a href='https://www.linkedin.com/in/rohit-singh-4b1702280' target='_blank'>
+          </Link>
+          <Link to='https://www.linkedin.com/in/rohit-singh-4b1702280' target='_blank'>
             <li>LinkedIn</li>
-          </a>
-          <a href='https://www.youtube.com/bluntman' target='_blank'>
+          </Link>
+          <Link to='https://www.youtube.com/bluntman' target='_blank'>
             <li>Youtube</li>
-          </a><a href='https://www.github.com/rohitsinghwho' target='_blank'>
+          </Link>
+          <Link to='https://www.github.com/rohitsinghwho' target='_blank'>
             <li>Github</li>
-          </a>
+          </Link>
         </ul>
       </div>
     </div>
