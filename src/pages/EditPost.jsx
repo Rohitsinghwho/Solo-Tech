@@ -1,7 +1,7 @@
 
 import React,{useState} from 'react'
-import { PostForm } from "../Components/PostForm/PostForm";
-import { Container } from "../Components/Container/Container";
+import  PostForm  from "../Components/PostForm/PostForm";
+import  Container from "../Components/Container/Container";
 import postService from '../AppwiteBackend/PostConfig';
 import { useNavigate, useParams } from 'react-router-dom';
 function EditPost() {

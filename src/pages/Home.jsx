@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
-import authService from "../AppwiteBackend/authentication";
-import { Container } from "../Components/Container/Container";
-import { PostCard } from "../Components/PostCard";
+import postService from "../AppwiteBackend/PostConfig";
+import  Container  from "../Components/Container/Container";
+import  PostCard  from "../Components/PostCard";
 function Home() {
   const [post, setPost] = useState([]);
   useEffect(() => {
     postService.getPosts().then((res) => {
-      setPost(res.documents);
+      if(res){
+        setPost(res.documents);
+      }
     });
   }, []);
 
-  if (post.length === 0) {
+  if (post?.length === 0) {
     return (
       <div className="w-full py-8 mt-4 text-center">
         <Container>

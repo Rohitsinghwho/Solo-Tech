@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { PostCard } from "../Components/PostCard";
-import { Container } from "../Components/Container/Container";
+import  PostCard  from "../Components/PostCard";
+import  Container  from "../Components/Container/Container";
 import postService from "../AppwiteBackend/PostConfig";
 
 const AllPosts = () => {

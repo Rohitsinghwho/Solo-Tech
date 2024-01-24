@@ -1,41 +1,42 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
 import postService from '../../AppwiteBackend/PostConfig'
-import {Input} from '../Input'
-import {RTE} from '../RTE'
-import {Button} from '../Button'
-import {Select} from '../Select'
+import Input from '../Input'
+import RTE from '../RTE'
+import Button from '../Button'
+import Select from '../Select'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 const PostForm = ({post}) => {
    const {register,control,handleSubmit,setValue,watch,getValues}= useForm({
     defaultValues:{
-      title:post.title||'',
-      content:post.content||'',
-      slug:post.$id||'',
-      status:post.status||'Active',
+      title:post?.title||'',
+      content:post?.content||'',
+      slug:post?.$id||'',
+      status:post?.status||'Active',
     }
    })
    const navigate = useNavigate()
    const userData= useSelector(state=>state.auth.userData);
    const submit =async(data)=>{
-    if(userData){
+    if(post){
          const file= data.image[0]?await postService.uploadFile(data.image[0]):null
          if(file){
-             await postService.deleteFile(post.featuredImage);
+             postService.deleteFile(post.featuredImage);
          }
-         const dbPost=await postService.updatePost(post.$id, {...data, featuredImage:file?file.$id:''})
+         const dbPost=await postService.updatePost(post.$id, {...data, featuredImage:file?file.$id:undefined})
          if(dbPost){
-            navigate(`post/${dbPost.$id}`)
+            navigate(`/post/${dbPost.$id}`)
          }
     }
     else{
-          const file=await data.image[0]?await postService.uploadFile(data.image[0]):null
+          const file= data.image[0]?await postService.uploadFile(data.image[0]):null
           if(file){
-              data.featuredImage=file.$id
-              const dbPost= await postService.createPost({...data,userId:userData.$id})
+              const fileId= file.$id
+            //   data.featuredImage=fileId
+              const dbPost= await postService.createPost({...data,featuredImage:file?fileId:undefined,userId:userData.$id})
               if(dbPost){
-                 navigate(`post/${dbPost.$id}`)
+                 navigate(`/post/${dbPost.$id}`)
               }
           } 
     }
@@ -94,7 +95,7 @@ const PostForm = ({post}) => {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={postService.getFilePreview(post.featuredImage)}
+                            src={postService.getFilePreview(post?.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />
@@ -104,6 +105,7 @@ const PostForm = ({post}) => {
                     options={["active", "inactive"]}
                     label="Status"
                     className="mb-4"
+                    value="active"
                     {...register("status", { required: true })}
                 />
                 <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">

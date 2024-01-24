@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import postService from "../AppwiteBackend/PostConfig";
-import { Button} from "../Components/Button";
-import {Container} from "../Components/Container/Container"
+import Button from "../Components/Button";
+import Container from "../Components/Container/Container"
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
@@ -38,7 +38,7 @@ export default function Post() {
             <Container>
                 <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
                     <img
-                        src={appwriteService.getFilePreview(post.featuredImage)}
+                        src={postService.getFilePreview(post.featuredImage)}
                         alt={post.title}
                         className="rounded-xl"
                     />

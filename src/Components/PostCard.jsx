@@ -1,6 +1,8 @@
 import React from "react";
 import postService from "../AppwiteBackend/PostConfig";
 import { useNavigate } from "react-router-dom";
+import parse from "html-react-parser";
+
 const PostCard = ({ $id, title, content, featuredImage }) => {
     const navigate = useNavigate();
     const handleCard=()=>{
@@ -14,9 +16,9 @@ const PostCard = ({ $id, title, content, featuredImage }) => {
         class="h-[200px] w-full rounded-md object-cover"
       />
       <div class="p-4">
-        <h1 class="text-lg font-semibold">{title}</h1>
+        <h1 class="text-lg font-semibold">{String(title).trim().slice(0,20)}....</h1>
         <p class="mt-3 text-sm text-gray-600">
-          {content}
+          {parse(String(content).trim().slice(0,30))}....
         </p>
         <button
           type="button"

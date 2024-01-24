@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { LogoutBtn } from "./LogoutBtn";
+import  LogoutBtn  from "./LogoutBtn";
 import LoginBtn  from "./LoginBtn";
 import SignUpBtn from "./SignUpBtn";
 import { useNavigate } from "react-router-dom";
@@ -79,9 +79,9 @@ const Header = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               class="h-6 w-6 cursor-pointer"
             >
               <line x1="4" y1="12" x2="20" y2="12"></line>

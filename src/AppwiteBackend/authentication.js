@@ -21,7 +21,7 @@ export class AuthService {
       );
       if (CreatedUser) {
         //Todo
-        return this.login(email, password);
+        return this.login({email, password});
       } else {
         return CreatedUser;
       }

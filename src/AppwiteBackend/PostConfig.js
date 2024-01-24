@@ -105,9 +105,9 @@ export class PostService{
             
         }
      }
-     async deleteFile(fildId){
+      async deleteFile(fildId){
         try {
-            await this.bucket.deleteFile(
+             await this.bucket.deleteFile(
                 conf.AppwriteBucketId,
                 fildId
             )

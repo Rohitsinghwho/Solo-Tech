@@ -1,7 +1,9 @@
 
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 export default function Footer() {
+  const authStatus= useSelector(state=>state.auth.status)
   const navigate = useNavigate()
   return (
     <footer class="w-full">
@@ -21,7 +23,8 @@ export default function Footer() {
       </svg>
       <Link to='/'><span class="ml-4 text-lg font-bold">Tech Solo</span></Link>
     </div>
-    <div class="hidden items-center md:inline-flex">
+    {!authStatus?(
+      <div class="hidden items-center md:inline-flex">
       <span class="text-sm font-medium text-black">Ready to be one of us ?</span>
       <button
         type="button"
@@ -31,9 +34,10 @@ export default function Footer() {
         Get Started
       </button>
     </div>
+    ):null}
   </div>
   <hr class="my-8" />
-  <div class="mx-auto flex max-w-6xl flex-col items-start gap-5 border-2 space-x-8 md:flex-row">
+  <div class="mx-auto flex max-w-6xl flex-col items-start gap-5 space-x-8 md:flex-row">
     
     <div class="mt-8 grid grid-cols-2 gap-6 md:mt-0 lg:w-3/4 lg:grid-cols-3">
       <div class="mb-8 lg:mb-0">

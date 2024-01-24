@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import authService from "../AppwiteBackend/authentication";
 import { login } from "../Store/AuthSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { Input } from "./Input";
+import  Input  from "./Input";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 const Signup = () => {
@@ -18,8 +18,8 @@ const Signup = () => {
         const userData = await authService.getCurrentUser();
         if (userData) {
           dispatch(login(userData));
-          navigate("/");
         }
+        navigate("/");
       }
     } catch (error) {
       setError(error.message);
@@ -51,7 +51,7 @@ const Signup = () => {
             <p class="mt-2 text-center text-base text-gray-600">
               Already have an account?{" "}
               <Link
-                href="/login"
+                to="/login"
                 title=""
                 class="font-medium text-black transition-all duration-200 hover:underline"
               >
@@ -61,7 +61,7 @@ const Signup = () => {
             <form onSubmit={handleSubmit(submit)} class="mt-8">
               <div class="space-y-5">
                 <div>
-                  <label for="name" class="text-base font-medium text-gray-900">
+                  <label htmlfor="name" class="text-base font-medium text-gray-900">
                     {" "}
                     Full Name{" "}
                   </label>
@@ -79,7 +79,7 @@ const Signup = () => {
                 </div>
                 <div>
                   <label
-                    for="email"
+                    htmlfor="email"
                     class="text-base font-medium text-gray-900"
                   >
                     {" "}
@@ -87,10 +87,9 @@ const Signup = () => {
                   </label>
                   <div class="mt-2">
                     <Input
-                      class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="Email"
-                      id="email"
                       {...register("email", {
                         required: true,
                         validate: {

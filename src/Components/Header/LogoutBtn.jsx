@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../Store/AuthSlice'
 import authService from '../../AppwiteBackend/authentication'
-export const LogoutBtn = () => {
+const LogoutBtn = () => {
     const dispatch= useDispatch();
     const handleLogout=()=>{
         authService.logout().then(()=>{
@@ -19,3 +19,4 @@ export const LogoutBtn = () => {
   </button>
   )
 }
+export default LogoutBtn
