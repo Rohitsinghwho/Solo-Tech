@@ -5,8 +5,6 @@ import './index.css'
 import { Provider } from 'react-redux'
 import Store from './Store/Store.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-
-
 const router= createBrowserRouter([
   {
     path: '/',
