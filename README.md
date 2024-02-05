@@ -1,7 +1,7 @@
 # SOLO TECH
 
 Solo Tech is a web application built on top of react and Appwrite backend.
-Author name : [Githu](https://github.com/rohitsinghwho)
+Author name : [Github](https://github.com/rohitsinghwho)
 
 # Tech Stack
 1. Vite --> A FrontEnd tool that helps build fast and optimized web applications.for more Ref visite [Vite](https://vitejs.dev/)<br>
